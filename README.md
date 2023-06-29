@@ -30,4 +30,4 @@ $ python grading.py to_grade.csv myfolder
 $ cat myfolder_output.csv
 ```
 
-The `zsh` script `cutgrade.sh` intends to remove grades from file names and store. If you run `./cutgrade.sh myfolder/` you get the results in the subfolder `myfolder_cut` of your current location.
+The `python` script `cutgrade.py` removes grades from file names and stores the result somewhere else. If you run `python cutgrade.py path/to/myfolder/` you get the results in the subfolder `myfolder_cut` of your current location.
