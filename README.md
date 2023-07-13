@@ -31,3 +31,5 @@ $ cat myfolder_output.csv
 ```
 
 The `python` script `cutgrade.py` removes grades from file names and stores the result somewhere else. If you run `python cutgrade.py path/to/myfolder/` you get the results in the subfolder `myfolder_cut` of your current location.
+
+The `python` script `splitpdf.py` splits a PDF file (1st argument) into a folder (2nd argument) based on the PDF’s table of contents.
