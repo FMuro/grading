@@ -69,23 +69,16 @@ output = open(os.path.basename(os.path.abspath(
     os.path.normpath(path)))+'_graded.csv', 'w')
 writer = csv.writer(output, delimiter=';')
 
+log_list=[]
+
 for row in csv_list:
     full_name = row[1]+' '+row[0]
     if full_name in names_dict_keys:
         file_name = names_dict[full_name]
         grade = names_grades_dict[file_name]
         row[-1] = grade
-        if "-v" in opts:
-            print('---')
-            print('The file name says that ' +
-                  file_name+' has scored '+grade)
-            print('I will assign this grade to: ' +
-                  full_name)
-        if "-v" in opts:
-            print('---')
-            print('')
-            print('TOTAL SCORE: '+str(total_score))
-            print('')
+        score = M[names_in_files.index(file_name),fullnames.index(full_name)]
+        log_list.append([score, file_name, grade, full_name]) # log info
 
 output = open(os.path.basename(os.path.abspath(
     os.path.normpath(path)))+'_graded.csv', 'w')
@@ -93,3 +86,11 @@ writer = csv.writer(output, delimiter=',', quotechar='"',
                     quoting=csv.QUOTE_ALL)
 writer.writerows(csv_list)
 output.close()
+
+# create log file
+sorted_log_list=sorted(log_list, key=lambda x:x[0]) # sort log in decreasing failiure likelyhood
+with open(os.path.basename(os.path.abspath(os.path.normpath(path)))+'_grading.log', 'w') as log:
+    # write log
+    for item in sorted_log_list:
+        log.write('---\n'+'SCORE: '+str(item[0])+'\n'+'OLD: '+item[1]+'\n'+'NEW: '+item[3]+'\n'+'GRADE: '+item[2]+'\n')
+    log.close() # close log file

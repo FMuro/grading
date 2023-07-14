@@ -20,7 +20,7 @@ $ python grading.py path/to/to_grade.csv path/to/myfolder
 
 The output is a CSV file called `myfolder_output.csv` which is like `to_grade.csv` but with the last column filled with grades.
 
-The option `-v` lists all assigned gradings for you to compare in case you detect anything wrong. It also outputs the arlgorithm's score for the output matching.
+A log file `myfolder_grading.log` is created, containing the list of name matches with their similarity scores, in increasing order, so the possible mistakes come first.
 
 You can test this script as follows. Assuming you're at this project's root:
 
@@ -28,6 +28,7 @@ You can test this script as follows. Assuming you're at this project's root:
 $ cd test
 $ python grading.py to_grade.csv myfolder
 $ cat myfolder_output.csv
+$ cat myfolder_grading.log
 ```
 
 The `python` script `cutgrade.py` removes grades from file names and stores the result somewhere else. If you run `python cutgrade.py path/to/myfolder/` you get the results in the subfolder `myfolder_cut` of your current location.
