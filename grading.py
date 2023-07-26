@@ -57,7 +57,6 @@ M = csr_matrix((scores, (rows, columns)), shape=(
 # solve the linear sum assignment problem
 [file_name_positions, full_name_positions] = optimize.linear_sum_assignment(
     M, maximize=True)
-total_score = M[file_name_positions, full_name_positions].sum()
 
 # create dictionary with name in fullname as key and name in file as value
 names_dict = {fullnames[full_name_positions[i]]: names_in_files[file_name_positions[i]]
@@ -69,7 +68,7 @@ output = open(os.path.basename(os.path.abspath(
     os.path.normpath(path)))+'_graded.csv', 'w')
 writer = csv.writer(output, delimiter=';')
 
-log_list=[]
+log_list = []
 
 for row in csv_list:
     full_name = row[1]+' '+row[0]
@@ -77,8 +76,8 @@ for row in csv_list:
         file_name = names_dict[full_name]
         grade = names_grades_dict[file_name]
         row[-1] = grade
-        score = M[names_in_files.index(file_name),fullnames.index(full_name)]
-        log_list.append([score, file_name, grade, full_name]) # log info
+        score = M[names_in_files.index(file_name), fullnames.index(full_name)]
+        log_list.append([score, file_name, grade, full_name])  # log info
 
 output = open(os.path.basename(os.path.abspath(
     os.path.normpath(path)))+'_graded.csv', 'w')
@@ -88,9 +87,11 @@ writer.writerows(csv_list)
 output.close()
 
 # create log file
-sorted_log_list=sorted(log_list, key=lambda x:x[0]) # sort log in decreasing failiure likelyhood
+# sort log in decreasing failiure likelyhood
+sorted_log_list = sorted(log_list, key=lambda x: x[0])
 with open(os.path.basename(os.path.abspath(os.path.normpath(path)))+'_grading.log', 'w') as log:
     # write log
     for item in sorted_log_list:
-        log.write('---\n'+'SCORE: '+str(item[0])+'\n'+'OLD: '+item[1]+'\n'+'NEW: '+item[3]+'\n'+'GRADE: '+item[2]+'\n')
-    log.close() # close log file
+        log.write('---\n'+'SCORE: '+str(item[0])+'\n'+'OLD: ' +
+                  item[1]+'\n'+'NEW: '+item[3]+'\n'+'GRADE: '+item[2]+'\n')
+    log.close()  # close log file
