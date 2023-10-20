@@ -20,13 +20,13 @@ $ python3 grading.py path/to/to_grade.csv path/to/myfolder
 
 The output is a CSV file called `myfolder_graded.csv` which is like `to_grade.csv` but with the last column filled with grades.
 
-A log file `myfolder_grading.log` is created, containing the list of name matches with their similarity scores, in increasing order, so the possible mistakes come first.
+The option `-d` prints a list of the form `file name | macthed name | score` in decreasing failure likelihood order for you to check if there are errors.
 
 You can test this script as follows. Assuming you're at this project's root:
 
 ```
 $ cd test
-$ python3 ../grading.py to_grade.csv myfolder
+$ python3 ../grading.py -d to_grade.csv myfolder
 $ cat myfolder_graded.csv
 $ cat myfolder_grading.log
 ```
