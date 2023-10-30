@@ -20,7 +20,7 @@ path = args[1]
 filenames = libmatching.PDF_names(path)
 
 # get dictionary whose keys are the names and whose values are the grades
-names_grades_dict = {re.search("[^\d]*", filename).group(0): re.search(
+names_grades_dict = {re.search("[^\d|,]*", filename).group(0): re.search(
     "\d*[,]?\d+", filename).group(0) for filename in filenames}
 
 
@@ -34,7 +34,7 @@ with open(data, newline='', encoding='utf-8-sig') as f:
 
 # full name from CSV joining first and second column
 def full_name(row):
-    return row[0]+', '+row[1]
+    return row[0]+' '+row[1]
 
 realnames = [full_name(row) for row in csv_list]
 

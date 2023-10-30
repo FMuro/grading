@@ -29,7 +29,6 @@ You can test this script as follows. Assuming you're at this project's root:
 $ cd test
 $ python3 ../grading.py -d to_grade.csv myfolder
 $ cat myfolder_graded.csv
-$ cat myfolder_grading.log
 ```
 
 The `python` script `cutgrade.py` removes grades from file names and stores the result somewhere else. If you run `python cutgrade.py path/to/myfolder/` you get the results in the subfolder `myfolder_cut` of your current location.

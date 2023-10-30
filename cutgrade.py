@@ -19,4 +19,4 @@ os.makedirs(output_folder, exist_ok=True)
 
 # copy files without grades to subfolder
 for filename in filenames:
-    shutil.copy(os.path.join(path, filename+'.pdf'), os.path.join(output_folder,re.search("[^\d]*", filename).group(0)+'.pdf'))
+    shutil.copy(os.path.join(path, filename+'.pdf'), os.path.join(output_folder,re.search("[^\d|,]*", filename).group(0)+'.pdf'))
