@@ -31,7 +31,12 @@ names_in_files = list(names_grades_dict.keys())
 with open(data, newline='', encoding='utf-8-sig') as f:
     reader = csv.reader(f, delimiter=',')
     csv_list = list(reader)
-    realnames = [row[1]+' '+row[0] for row in csv_list]
+
+# full name from CSV joining first and second column
+def full_name(row):
+    return row[0]+', '+row[1]
+
+realnames = [full_name(row) for row in csv_list]
 
 # create best match list and dictionary for filenames and realnames
 # elements of the list are of the form [filename, best realname match, score]
@@ -46,10 +51,11 @@ if '-d' in opts:
         print(*match, sep=' | ')
 
 # fill grades in list
+
 for row in csv_list:
-    full_name = row[1]+' '+row[0]
-    if full_name in names_dict_keys:
-        file_name = names_dict[full_name]
+    realname = full_name(row)
+    if realname in names_dict_keys:
+        file_name = names_dict[realname]
         grade = names_grades_dict[file_name]
         row[-1] = grade
 
