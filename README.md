@@ -21,7 +21,7 @@ $ python3 grading.py path/to/to_grade.csv path/to/myfolder
 
 The output is a CSV file called `myfolder_graded.csv` which is like `to_grade.csv` but with the last column filled with grades.
 
-The option `-d` prints a list of the form `file name | macthed name | score` in decreasing failure likelihood order for you to check if there are errors.
+The option `-d` prints a list of the form `file name | matched name | score` in decreasing failure likelihood order for you to check if there are errors.
 
 You can test this script as follows. Assuming you're at this project's root:
 
