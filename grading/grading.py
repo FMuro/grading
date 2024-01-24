@@ -2,7 +2,7 @@ import os
 import csv
 import re
 import shutil
-from libmatching.libmatching import PDF_names, best_matches
+from libmatching.libmatching import PDF_names, best_matches, sorted_table
 import argparse
 
 # CLI arguments
@@ -62,10 +62,8 @@ def funcion():
 
         # print log if verbose mode is on ("-v" option) in decreasing failure likelihood order
         if args.verbose:
-            sorted_log_list = sorted(matches_list, key=lambda x: x[2])
-            for match in sorted_log_list:
-                print(*match, sep=' | ')
-
+            sorted_table(matches_list)
+            
         # fill grades in list
 
         for row in csv_list:
