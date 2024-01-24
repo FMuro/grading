@@ -1,4 +1,18 @@
-The goal of this `python` script is to fill grading spreadsheets downloaded from **Blackboard Learn** from information contained in PDF files's titles. This can probably be adapted to other virtual learning environments like **Moodle**.
+# What does this do?
+
+The goal of this `python` package is to fill grading spreadsheets downloaded from **Blackboard Learn** from information contained in PDF files's titles. This can probably be adapted to other virtual learning environments like **Moodle**.
+
+# Install
+
+Run the following command in terminal:
+
+```
+pip install --upgrade git+https://github.com/FMuro/grading.git#egg=grading
+```
+
+Use this command to update the package too. 
+
+# How to use
 
 When downloading the spreadsheet to work offline, take care of:
 
@@ -13,30 +27,31 @@ We must have the following things:
   * The last one should be the grading placeholder.
 - A folder `myfolder` with all PDF files. Their names should consist of a text name (without numbers) that resembles the person's full name, i.e. given name(s) + family name(s), and a number at the end (the grade, with `,` as decimal separator and no other separator whatsoever). Like `Pepe Pérez, 3,5.pdf`. It is important that words (names and surnames) are always in the same order.
 
-Install the requirements and run the script as follows:
+Install the requirements and run the package as follows:
 
 ```
-$ python3 grading.py path/to/to_grade.csv path/to/myfolder
+$ grading --list path/to/to_grade.csv --folder path/to/myfolder
 ```
 
 The output is a CSV file called `myfolder_graded.csv` which is like `to_grade.csv` but with the last column filled with grades.
 
 The option `-d` prints a list of the form `file name | matched name | score` in decreasing failure likelihood order for you to check if there are errors.
 
-You can test this script as follows. Assuming you're at this project's root:
+The option `-t` removes grades from file names and stores them in `myfolder_trimmed` within your current location.
+
+You can get help by running:
+
+```
+$ grading -h
+```
+
+# Testing
+
+You can test this package by downloading the `test` folder and running the following commands:
 
 ```
 $ cd test
-$ python3 ../grading.py -d to_grade.csv myfolder
+$ grading -v -t -l to_grade.csv -f myfolder
 $ cat myfolder_graded.csv
-```
-
-The `python` script `cutgrade.py` removes grades from file names and stores the result somewhere else. If you run `python cutgrade.py path/to/myfolder/` you get the results in the subfolder `myfolder_cut` of your current location.
-
-You can test this second script as follows. Again, assuming you're at this project's root:
-
-```
-$ cd test
-$ python3 ../cutgrade.py myfolder
-$ ls myfolder_cut
+$ ls myfolder_trimmed
 ```

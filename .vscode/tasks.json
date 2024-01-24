@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build python package & reinstall",
+            "type": "shell",
+            "command": "python3.11 -m build && pip uninstall -y grading && pip install dist/*.whl"
+        },
+        {
+            "label": "Tests",
+            "type": "shell",
+            "command": "cd test && rm -r myfolder_trimmed ; grading -v -t -l to_grade.csv -f myfolder && cat myfolder_graded.csv && rm -r myfolder_trimmed ; grading -t -f myfolder && ls myfolder_trimmed && cd .."
+        },
+    ]
+}
