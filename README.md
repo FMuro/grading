@@ -22,10 +22,10 @@ When downloading the spreadsheet to work offline, take care of:
 We must have the following things:
 
 - A CSV file `to_grade.csv` delimited with `,` with at least three columns: 
-  * The first one should contain the family name(s).
-  * The second one should contain the given name(s). 
+  * The first one should contain the family name.
+  * The second one should contain the given name. 
   * The last one should be the grading placeholder.
-- A folder `myfolder` with all PDF files. Their names should consist of a text name (without numbers) that resembles the person's full name, i.e. given name(s) + family name(s), and a number at the end (the grade, with `,` as decimal separator and no other separator whatsoever). Like `Pepe Pérez, 3,5.pdf`. It is important that words (names and surnames) are always in the same order.
+- A folder `myfolder` with all PDF files. Their names should consist of a text name (without numbers) that resembles the person's full name, i.e. family name + given name, and a number at the end (the grade, with `,` as decimal separator and no other separator whatsoever). Like `Pérez Pepe, 3,5.pdf`. It is important that words (names and surnames) are always in the same order.
 
 Install the requirements and run the package as follows:
 
@@ -35,7 +35,7 @@ $ grading --list path/to/to_grade.csv --folder path/to/myfolder
 
 The output is a CSV file called `myfolder_graded.csv` which is like `to_grade.csv` but with the last column filled with grades.
 
-The option `-d` prints a list of the form `file name | matched name | score` in decreasing failure likelihood order for you to check if there are errors.
+The option `-v` prints a list of the form `file name | matched name | score` in decreasing failure likelihood order for you to check if there are errors.
 
 The option `-t` removes grades from file names and stores them in `myfolder_trimmed` within your current location.
 
