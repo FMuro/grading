@@ -55,3 +55,9 @@ $ grading -v -t -l to_grade.csv -f myfolder
 $ cat myfolder_graded.csv
 $ ls myfolder_trimmed
 ```
+
+# Remove
+
+```
+pip uninstall grading
+```
