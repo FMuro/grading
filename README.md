@@ -30,7 +30,7 @@ We must have the following things:
 Install the requirements and run the package as follows:
 
 ```
-$ grading --list path/to/to_grade.csv --folder path/to/myfolder
+grading --list path/to/to_grade.csv --folder path/to/myfolder
 ```
 
 The output is a CSV file called `myfolder_graded.csv` which is like `to_grade.csv` but with the last column filled with grades.
@@ -42,7 +42,7 @@ The option `-t` removes grades from file names and stores them in `myfolder_trim
 You can get help by running:
 
 ```
-$ grading -h
+grading -h
 ```
 
 # Testing
@@ -50,14 +50,14 @@ $ grading -h
 You can test this package by downloading the `test` folder and running the following commands:
 
 ```
-$ cd test
-$ grading -v -t -l to_grade.csv -f myfolder
-$ cat myfolder_graded.csv
-$ ls myfolder_trimmed
+cd test
+grading -v -t -l to_grade.csv -f myfolder
+cat myfolder_graded.csv
+ls myfolder_trimmed
 ```
 
 # Remove
 
 ```
-$ pip uninstall grading
+pip uninstall grading
 ```
