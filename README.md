@@ -59,5 +59,5 @@ $ ls myfolder_trimmed
 # Remove
 
 ```
-pip uninstall grading
+$ pip uninstall grading
 ```
