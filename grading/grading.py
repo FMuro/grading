@@ -12,14 +12,17 @@ parser = argparse.ArgumentParser(
     description='Fill Blackboard Learn grading spreadsheets from PDF file names',
     epilog='Enjoy your teaching admin!')
 
-parser.add_argument('-l', '--list', help='CSV file with columns name,surname,grade')
-parser.add_argument('-f', '--folder', help="folder containing the PDF files called like 'Pepe Pérez, 3,5.pdf'")
+parser.add_argument(
+    '-l', '--list', help='CSV file with columns name,surname,grade')
+parser.add_argument(
+    '-f', '--folder', help="folder containing the PDF files called like 'Pepe Pérez, 3,5.pdf'", required=True)
 parser.add_argument('-v', '--verbose', action='store_true',
                     help='print matching list with scores')
 parser.add_argument('-t', '--trim', action='store_true',
                     help='trim degrees from names in PDF files')
 
 args = parser.parse_args()
+
 
 def funcion():
     # CSV file with realname;email
@@ -38,7 +41,6 @@ def funcion():
         # get dictionary whose keys are the names and whose values are the grades
         names_grades_dict = {re.search("[^\d|,]*", filename).group(0): re.search(
             "\d*[,]?\d+", filename).group(0) for filename in filenames}
-
 
         # create list of names in files
         names_in_files = list(names_grades_dict.keys())
@@ -63,7 +65,7 @@ def funcion():
         # print log if verbose mode is on ("-v" option) in decreasing failure likelihood order
         if args.verbose:
             sorted_table(matches_list)
-            
+
         # fill grades in list
 
         for row in csv_list:
@@ -80,19 +82,17 @@ def funcion():
                             quoting=csv.QUOTE_ALL)
         writer.writerows(csv_list)
         output.close()
-    
-    else:
-        print('No CSV file provided.')
-
 
     if args.trim:
 
-        #output folder name
-        output_folder=os.path.basename(os.path.abspath(os.path.normpath(path)))+'_trimmed'
+        # output folder name
+        output_folder = os.path.basename(
+            os.path.abspath(os.path.normpath(path)))+'_trimmed'
 
         # create output folder
         os.makedirs(output_folder, exist_ok=True)
 
         # copy files without grades to output folder
         for filename in filenames:
-            shutil.copy(os.path.join(path, filename+'.pdf'), os.path.join(output_folder,re.search("[^\d|,]*", filename).group(0)+'.pdf'))
+            shutil.copy(os.path.join(path, filename+'.pdf'), os.path.join(
+                output_folder, re.search("[^\d|,]*", filename).group(0)+'.pdf'))
