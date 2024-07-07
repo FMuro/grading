@@ -11,7 +11,7 @@
         {
             "label": "Tests",
             "type": "shell",
-            "command": "cd test && rm -r myfolder_trimmed ; grading -v -t -l to_grade.csv -f myfolder && cat myfolder_graded.csv && rm -r myfolder_trimmed ; grading -t -f myfolder && ls myfolder_trimmed && cd .."
+            "command": "cd test &&  rm -rf *_trimmed ; grading -v -t -n -l to_grade.csv -f myfolder && cat myfolder_graded.csv && ls myfolder_trimmed && grading -v -t -n -s . -l to_grade.csv -f myfolder_dot && cat myfolder_dot_graded.csv && ls myfolder_dot_trimmed && grading -v -t -n -s \"'\" -l to_grade.csv -f myfolder_apostrophe && cat myfolder_apostrophe_graded.csv && ls myfolder_apostrophe_trimmed && grading -v -n -d \";\" -l to_grade_semicolon.csv -f myfolder && cat myfolder_graded.csv && grading -v -n -d \"|\" -l to_grade_bar.csv -f myfolder && cat myfolder_graded.csv && grading -v -n -d \"	\" -l to_grade_tab.csv -f myfolder && cat myfolder_graded.csv && cd .."
         },
     ]
 }
