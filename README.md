@@ -57,7 +57,7 @@ grading -h
 
 `--trim` trim degrees from names in PDF files and store them in `myfolder_trimmed`
 
-`--delimiter DELIMITER`  CSV delimiter character. **Default is `,`** and other common options are `;` and `|`, and of course tabs, but you'd have to insert a real tab in the terminal (the way of doing that depends on the terminal).                                   
+`--delimiter DELIMITER`  CSV delimiter character. **Default is `,`** and other common options are `;` and `|`, and of course tabs, but you'd have to insert a real tab in the terminal (the way of doing that depends on the terminal).                                 
 
 `--column COLUMN` number of column to fill with grades. It **deafults to the last one**. First column is `0`, last is `-1`, etc.
 
@@ -95,6 +95,7 @@ You can test this package by downloading the `test` folder and running the follo
 
 ```
 cd test
+rm -rf *_trimmed
 grading -v -t -n -l to_grade.csv -f myfolder
 cat myfolder_graded.csv
 ls myfolder_trimmed

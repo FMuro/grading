@@ -2,7 +2,7 @@ import os
 import csv
 import re
 import shutil
-from libmatching.libmatching import PDF_names, best_matches, sorted_table
+from matching import PDF_names, best_matches, sorted_table
 import argparse
 import sys
 
@@ -28,7 +28,7 @@ parser.add_argument('-n', '--names', help="given and family names in separate CS
 args = parser.parse_args()
 
 
-def funcion():
+def grade_spreadsheet():
     # CSV file with realname;email
     data = args.list
 
