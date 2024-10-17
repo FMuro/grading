@@ -12,6 +12,18 @@ pip install --upgrade git+https://github.com/FMuro/grading.git#egg=grading
 
 Use this command to update the package too. 
 
+Do you use `pipx`? This is typical if you have `python` installed on macOS through `homebrew`. Then the command to install is:
+
+```
+pipx install git+https://github.com/FMuro/grading.git#egg=grading
+```
+
+The command to update is:
+
+```
+pipx upgrade grading
+```
+
 # How to use
 
 We must have the following things:
@@ -121,4 +133,10 @@ If your files are called like `Pérez, Pepe, 3,5.pdf` and your CSV file has a si
 
 ```
 pip uninstall grading
+```
+
+If you installed it using `pipx`:
+
+```
+pipx uninstall grading
 ```
